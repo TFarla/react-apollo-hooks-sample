@@ -3,7 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "apollo-boost": "^0.1.23",
+    "apollo-link-mock": "^1.0.1",
+    "graphql": "^14.0.2",
     "react": "^16.7.0-alpha.2",
+    "react-apollo": "^2.3.3",
+    "react-apollo-hooks": "^0.2.1",
     "react-dom": "^16.7.0-alpha.2",
     "react-scripts-ts": "3.1.0"
   },
@@ -11,13 +16,18 @@
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "eject": "react-scripts-ts eject",
+    "apollo:download": "apollo service:download --endpoint=https://fakerql.com/graphql",
+    "apollo:codegen": "apollo client:codegen --target=typescript --localSchemaFile=\"./schema.json\""
   },
   "devDependencies": {
+    "@types/graphql": "^14.0.3",
     "@types/jest": "^23.3.10",
     "@types/node": "^10.12.18",
     "@types/react": "^16.7.18",
     "@types/react-dom": "^16.0.11",
+    "apollo": "^2.1.8",
+    "react-testing-library": "^5.4.2",
     "typescript": "^3.2.2"
   }
 }
