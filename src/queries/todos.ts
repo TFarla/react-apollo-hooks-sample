@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { Query } from "react-apollo";
+import { useQuery } from "react-apollo-hooks";
 import { GetTodos, GetTodosVariables } from "./__generated__/GetTodos";
 
 export const getTodosQuery = gql`
@@ -12,4 +12,5 @@ export const getTodosQuery = gql`
   }
 `;
 
-export class GetTodosQuery extends Query<GetTodos, GetTodosVariables> {}
+export const useTodosQuery = () =>
+  useQuery<GetTodos, GetTodosVariables>(getTodosQuery);

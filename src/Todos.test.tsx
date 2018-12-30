@@ -2,7 +2,7 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { ApolloClient } from "apollo-client";
 import { MockedResponse, MockLink } from "apollo-link-mock";
 import * as React from "react";
-import { ApolloProvider } from "react-apollo";
+import { ApolloProvider } from "react-apollo-hooks";
 import { cleanup, render, wait } from "react-testing-library";
 import { GetTodos, GetTodos_allTodos } from "./queries/__generated__/GetTodos";
 import { getTodosQuery } from "./queries/todos";
@@ -44,11 +44,11 @@ it("should render todos", async () => {
 
   const client = createClient(mocks);
   const wrapper = render(
-    <div>
+    <React.Suspense fallback={<span>loading</span>}>
       <ApolloProvider client={client}>
         <Todos />
       </ApolloProvider>
-    </div>
+    </React.Suspense>
   );
 
   await wait(() => {

@@ -1,22 +1,16 @@
 import * as React from "react";
 import { GetTodos } from "./queries/__generated__/GetTodos";
-import { GetTodosQuery, getTodosQuery } from "./queries/todos";
+import { useTodosQuery } from "./queries/todos";
 
-export const Todos = () => (
-  <GetTodosQuery query={getTodosQuery}>
-    {({ loading, error, data }) => {
-      if (loading) {
-        return <span>loading</span>;
-      }
+export const Todos = () => {
+  const { data, errors } = useTodosQuery();
 
-      if (error) {
-        return <span>error</span>;
-      }
+  if (errors) {
+    return <span>errors</span>;
+  }
 
-      return renderTodos(data);
-    }}
-  </GetTodosQuery>
-);
+  return renderTodos(data);
+};
 
 function renderTodos(data: GetTodos | undefined) {
   if (!data || !data.allTodos) {
